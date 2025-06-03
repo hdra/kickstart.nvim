@@ -691,6 +691,7 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        typescript = { 'prettier' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -915,10 +916,6 @@ require('lazy').setup({
       },
       indent = { enable = true, disable = { 'ruby', 'elixir' } },
     },
-
-    --   vim.api.nvim_set_option_value('foldenable', false, {})
-    --   vim.api.nvim_set_option_value('foldmethod', 'expr', {})
-    --   vim.api.nvim_set_option_value('foldexpr', 'nvim_treesitter#foldexpr()', {})
     --
     --   -- There are additional nvim-treesitter modules that you can use to interact
     --   -- with nvim-treesitter. You should go explore a few and see what interests you:
