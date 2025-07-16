@@ -17,7 +17,22 @@ return {
     vim.keymap.set('n', '<leader>ss', fzf.builtin, { desc = '[S]earch [S]elect FZF' })
     vim.keymap.set('n', '<leader>sd', fzf.lsp_document_diagnostics, { desc = '[S]earch [D]iagnostics' })
 
-    fzf.setup()
+    fzf.setup {
+      fzf_opts = {
+        ['--keep-right'] = true,
+      },
+      defaults = {
+        formatter = 'path.filename_first',
+      },
+      buffers = {
+        sort_lastused = false,
+      },
+      actions = {
+        files = {
+          ['enter'] = require('fzf-lua').actions.file_edit,
+        },
+      },
+    }
     fzf.register_ui_select()
   end,
 }

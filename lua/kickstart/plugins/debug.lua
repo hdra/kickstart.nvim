@@ -81,6 +81,20 @@ return {
     local dap = require 'dap'
     local dapui = require 'dapui'
 
+    -- dap.adapters = {
+    --   ['pwa-node'] = {
+    --     type = 'server',
+    --     host = '::1',
+    --     port = '${port}',
+    --     executable = {
+    --       command = 'js-debug-adapter',
+    --       args = {
+    --         '${port}',
+    --       },
+    --     },
+    --   },
+    -- }
+
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
@@ -95,6 +109,7 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
+        'js-debug-adapter',
       },
     }
 
