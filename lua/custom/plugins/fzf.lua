@@ -18,9 +18,6 @@ return {
     vim.keymap.set('n', '<leader>sd', fzf.lsp_document_diagnostics, { desc = '[S]earch [D]iagnostics' })
 
     fzf.setup {
-      fzf_opts = {
-        ['--keep-right'] = true,
-      },
       defaults = {
         formatter = 'path.filename_first',
       },
