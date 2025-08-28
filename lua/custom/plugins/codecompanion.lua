@@ -13,24 +13,26 @@ return {
   config = function()
     require('codecompanion').setup {
       adapters = {
-        opts = {
-          show_defaults = false,
+        http = {
+          opts = {
+            show_defaults = false,
+          },
+          anthropic = require('codecompanion.adapters').extend('anthropic', {
+            env = {
+              api_key = 'CODECOMP_ANTHROPIC_API_KEY',
+            },
+          }),
+          deepseek = require('codecompanion.adapters').extend('deepseek', {
+            env = {
+              api_key = 'CODECOMP_DEEPSEEK_API_KEY',
+            },
+          }),
+          gemini = require('codecompanion.adapters').extend('gemini', {
+            env = {
+              api_key = 'CODECOMP_GEMINI_API_KEY',
+            },
+          }),
         },
-        anthropic = require('codecompanion.adapters').extend('anthropic', {
-          env = {
-            api_key = 'CODECOMP_ANTHROPIC_API_KEY',
-          },
-        }),
-        deepseek = require('codecompanion.adapters').extend('deepseek', {
-          env = {
-            api_key = 'CODECOMP_DEEPSEEK_API_KEY',
-          },
-        }),
-        gemini = require('codecompanion.adapters').extend('gemini', {
-          env = {
-            api_key = 'CODECOMP_GEMINI_API_KEY',
-          },
-        }),
       },
       strategies = {
         chat = {

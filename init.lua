@@ -99,6 +99,10 @@ vim.g.have_nerd_font = true
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+-- Make window title to follow cwd
+vim.opt.title = true
+vim.opt.titlestring = 'nvim(' .. vim.fs.basename(vim.fn.getcwd()) .. ')'
+
 -- Make line numbers default
 vim.opt.number = true
 
