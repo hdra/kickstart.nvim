@@ -183,6 +183,8 @@ vim.keymap.set('n', '<leader>h', '<cmd>bprev<cr>')
 vim.keymap.set('n', '<leader>l', '<cmd>bnext<cr>')
 vim.keymap.set('n', '<leader>sv', '<cmd>write<cr>', { desc = 'Sa[v]e File' })
 
+vim.keymap.set('t', '<esc>', '<C-\\><C-n>', { noremap = true })
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 

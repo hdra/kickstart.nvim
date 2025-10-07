@@ -12,12 +12,18 @@ return {
     vim.keymap.set('n', '<leader>sb', fzf.buffers, { desc = '[S]earch [B]buffers' })
     vim.keymap.set('n', '<leader>sw', fzf.grep_cword, { desc = '[S]earch current [W]ord' })
     vim.keymap.set('n', '<leader>sg', fzf.live_grep, { desc = '[S]earch by [G]rep' })
+    vim.keymap.set('n', '<leader>sq', fzf.quickfix, { desc = '[S]earch [Q]uickfix' })
     vim.keymap.set('n', '<leader>/', fzf.blines, { desc = '[/] Fuzzily search in current buffer' })
     vim.keymap.set('n', '<leader>sk', fzf.keymaps, { desc = '[S]earch [K]eymaps' })
     vim.keymap.set('n', '<leader>ss', fzf.builtin, { desc = '[S]earch [S]elect FZF' })
     vim.keymap.set('n', '<leader>sd', fzf.lsp_document_diagnostics, { desc = '[S]earch [D]iagnostics' })
 
     fzf.setup {
+      keymap = {
+        fzf = { -- this is the binding for the FZF, the executable - it has its own binding API. ref: https://manpages.ubuntu.com/manpages/jammy/man1/fzf.1.html#key/event%20bindings
+          ['ctrl-t'] = 'toggle-all',
+        },
+      },
       defaults = {
         formatter = 'path.filename_first',
       },
@@ -27,6 +33,7 @@ return {
       actions = {
         files = {
           ['enter'] = require('fzf-lua').actions.file_edit,
+          ['ctrl-q'] = require('fzf-lua').actions.file_sel_to_qf,
         },
       },
     }
