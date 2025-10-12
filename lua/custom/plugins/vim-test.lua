@@ -6,5 +6,8 @@ return {
     vim.keymap.set('n', '<leader>tn', function()
       vim.cmd 'TestNearest'
     end, { desc = '[T]est [n]earest' })
+    vim.keymap.set('n', '<leader>tf', function()
+      vim.cmd 'TestFile'
+    end, { desc = '[T]est [F]ile' })
   end,
 }
