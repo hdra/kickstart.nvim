@@ -24,9 +24,6 @@ return {
           ['ctrl-t'] = 'toggle-all',
         },
       },
-      defaults = {
-        formatter = 'path.filename_first',
-      },
       buffers = {
         sort_lastused = false,
       },
