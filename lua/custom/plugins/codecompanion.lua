@@ -13,6 +13,34 @@ return {
   config = function()
     require('codecompanion').setup {
       adapters = {
+        acp = {
+          opts = {
+            show_defaults = false,
+          },
+          gemini_cli = function()
+            return require('codecompanion.adapters').extend('gemini_cli', {
+              defaults = {
+                auth_method = 'oauth-personal', -- "oauth-personal"|"gemini-api-key"|"vertex-ai"
+                oauth_credentials_path = vim.fs.abspath '~/.gemini/oauth_creds.json',
+              },
+              commands = {
+                default = {
+                  'gemini',
+                  '--experimental-acp',
+                },
+              },
+              env = {
+                GOOGLE_CLOUD_PROJECT = 'gemini-code-assist-478204',
+              },
+              handlers = {
+                auth = function(self)
+                  local oauth_credentials_path = self.defaults.oauth_credentials_path
+                  return (oauth_credentials_path and vim.fn.filereadable(oauth_credentials_path)) == 1
+                end,
+              },
+            })
+          end,
+        },
         http = {
           opts = {
             show_defaults = false,
@@ -40,7 +68,7 @@ return {
           slash_commands = {
             ['file'] = {
               -- Location to the slash command in CodeCompanion
-              callback = 'strategies.chat.slash_commands.file',
+              -- callback = 'strategies.chat.slash_commands.catalog.file',
               description = 'Select a file using FZF',
               opts = {
                 provider = 'fzf_lua', -- Other options include 'default', 'mini_pick', 'fzf_lua', snacks

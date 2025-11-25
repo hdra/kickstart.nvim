@@ -241,6 +241,7 @@ return {
           },
         },
       },
+      prettier = {},
     }
 
     -- Ensure the servers and tools above are installed

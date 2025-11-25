@@ -415,6 +415,7 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        json = { 'prettier' },
         typescript = { 'prettier' },
         typescriptreact = { 'prettier' },
         -- Conform can also run multiple formatters sequentially
