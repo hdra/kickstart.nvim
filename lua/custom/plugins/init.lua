@@ -3,9 +3,10 @@
 --
 -- See the kickstart.nvim README for more information
 
-vim.api.nvim_set_option_value('foldenable', false, {})
+vim.api.nvim_set_option_value('foldenable', true, {})
 vim.api.nvim_set_option_value('foldmethod', 'expr', {})
-vim.api.nvim_set_option_value('foldexpr', 'nvim_treesitter#foldexpr()', {})
+vim.api.nvim_set_option_value('foldexpr', 'v:lua.vim.treesitter.foldexpr()', {})
+vim.api.nvim_set_option_value('foldlevelstart', 99, {})
 
 local M = {}
 
