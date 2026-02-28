@@ -218,6 +218,7 @@ return {
 
       ts_ls = {},
       svelte = {},
+      expert = {},
       ruby_lsp = {
         cmd_env = {
           BUNDLE_GEMFILE = vim.fn.expand '~/.global-ruby/Gemfile',
@@ -241,7 +242,6 @@ return {
           },
         },
       },
-      prettier = {},
     }
 
     -- Ensure the servers and tools above are installed
@@ -260,6 +260,7 @@ return {
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
+      'prettier',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -273,19 +274,10 @@ return {
           -- by the server configuration above. Useful when disabling
           -- certain features of an LSP (for example, turning off formatting for ts_ls)
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-          require('lspconfig')[server_name].setup(server)
+          vim.lsp.config[server_name].config(server_name, server)
+          vim.lsp.enable(server_name)
         end,
       },
-    }
-
-    require('lspconfig').lexical.setup {
-      cmd = { '/Users/hndr/.bin/expert_darwin_arm64' },
-      root_dir = function(fname)
-        return require('lspconfig').util.root_pattern('mix.exs', '.git')(fname) or vim.loop.cwd()
-      end,
-      filetypes = { 'elixir', 'eelixir', 'heex' },
-      -- optional settings
-      settings = {},
     }
   end,
 }

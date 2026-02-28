@@ -418,6 +418,7 @@ require('lazy').setup({
         json = { 'prettier' },
         typescript = { 'prettier' },
         typescriptreact = { 'prettier' },
+        heex = { 'prettier' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
